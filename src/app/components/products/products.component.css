@@ -1,0 +1,55 @@
+@media screen and (max-width: 800px) {
+    .card-body {
+        width: 170px;
+        padding: 0;
+    }
+    .col-md-3 {
+        width: 170px;
+        padding: 0;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .card-body {
+        width: 150px;
+        padding: 0;
+    }
+    .col-md-3 {
+        width: 160px;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .card-body {
+        width: 170px;
+        padding: 0;
+    }
+    .col-md-3 {
+        width: 170px;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .card-body {
+        width: 160px;
+        padding: 0;
+    }
+    .col-md-3 {
+        width: 160px;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .card-body {
+        width: 130px;
+        padding: 0;
+    }
+    .col-md-3 {
+        width: 150px;
+        padding: 0;
+    }
+}

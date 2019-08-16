@@ -1,0 +1,65 @@
+<div *ngIf='logIn()'>
+  <app-navigate></app-navigate>
+  <div class="container p-4">
+    <div class="row">
+
+      <div class="col-md-6 offset-md-2">
+
+        <div class="card shadow">
+          <div class="card-body">
+            <h3 style="font-family: Pacifico">Productos</h3>
+            <form>
+              <div class="form-group">
+                Codigo
+                <input type="text" name="codigo" [(ngModel)]="product.codigo" placeholder="codigo" class="form-control"
+                  autofocus>
+              </div>
+              <div class="form-group">
+                Descripcion
+                <input type="text" name="descipcion" [(ngModel)]="product.descripcion" placeholder="descripcion"
+                  class="form-control" autofocus>
+              </div>
+              <div class="form-group">
+                Cantidad
+                <input type="number" name="cantidad" [(ngModel)]="product.cantidad" placeholder="cantidad"
+                  class="form-control" style="max-width: 100px">
+              </div>
+              <div class="form-group">
+                Precio
+                <input type="number" min="1" step="any" name="precio" [(ngModel)]="product.precio" placeholder="precio"
+                  rows="2" class="form-control" style="max-width: 180px">
+              </div>
+              <div class="form-group">
+                Imagen
+                <input type="url" name="imagen" [(ngModel)]="product.imagen" placeholder="Imagen" class="form-control">
+              </div>
+              <hr>
+              <button class="btn btn-success btn-block" (click)="edit ? updateProduct() : saveNewProduct()">
+                Guardar
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+        <div class="card card-body shadow text-center">
+          <h3> {{product.codigo == 0 ? '':product.codigo}} </h3>
+          <h3>{{product.descripcion == '' ? 'Product Descripcion':product.descripcion}}
+          </h3>
+
+          <img [src]="product.imagen == '' ? '../../../assets/retail.gif' : product.imagen " class="card-img-top">
+          <hr>
+          <p>
+            <Strong>Cantidad:</Strong> {{product.cantidad == 0 ? 'Write your Cantidad':product.cantidad}}
+          </p>
+          <p>
+            <strong>Precio:</strong> {{product.precio == 0 ? 'Write your Precio':product.precio}}
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

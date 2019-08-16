@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="container py-4">
+    <div class="col-xl-6  justify-content-center">
+
+      <div class="card shadow-lg my-5 align-items-center" style="border-radius: 15px">
+
+        <div class="card-body ">
+
+          <h1 style="font-family: Pacifico">AgroCommerce</h1>
+          <br>
+          <h5 class="font-weight-bold">Iniciar Sesion</h5>
+
+          <div class="text-center">
+
+          </div>
+
+          <form class="user">
+
+            <div class="form-group">
+
+              <input type="email" name="email" [(ngModel)]="credentials.email" placeholder="Correo" class="form-control" autofocus>
+
+            </div>
+
+            <div class="form-group">
+              <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="credentials.password" class="form-control"
+                (keyup.enter)="sendCred()" autofocus>
+            </div>
+
+            <a (click)="sendCred()" class="btn btn-info btn-block" style="color: white">
+              Login
+            </a>
+
+          </form>
+          <hr>
+          <a (click)="sendCred()" style="color: green">
+            Registro
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
