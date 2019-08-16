@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build --prod && angular-cli-ghpages --branch master"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,8 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "@ng-bootstrap/ng-bootstrap": "^5.1.0",
+    "@angular/cli": "~7.2.3",
+    "@angular/compiler-cli": "~7.2.0",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
