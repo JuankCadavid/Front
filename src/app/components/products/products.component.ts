@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Products } from '../../models/products'
 import { Router } from '@angular/router';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-products',
@@ -12,6 +13,8 @@ export class ProductsComponent implements OnInit {
   products: any = [];
 
   delete: boolean = true;
+  searchTerm: string;
+  conversionDecryptOutput: string;
 
   product: Products = {
 
@@ -81,7 +84,21 @@ export class ProductsComponent implements OnInit {
   }
 
   logIn(): boolean {
-    return (localStorage.getItem('auth_token') !== null);
+
+    // Decrypt
+    this.conversionDecryptOutput = localStorage.getItem('prf')
+
+    if (this.conversionDecryptOutput) {
+
+      var bytes = CryptoJS.AES.decrypt(this.conversionDecryptOutput.toString(), 'dcripcoagroeco');
+
+      var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+
+      if (plaintext[1] == '1') {
+        return (localStorage.getItem('auth_token') !== null);
+      }
+    }
+
   }
 
 }

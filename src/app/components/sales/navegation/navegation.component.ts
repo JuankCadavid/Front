@@ -2,23 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
 
 @Component({
-  selector: 'app-navigate',
-  templateUrl: './navigate.component.html',
-  styleUrls: ['./navigate.component.css']
+  selector: 'app-navegation',
+  templateUrl: './navegation.component.html',
+  styleUrls: ['./navegation.component.css']
 })
-export class NavigateComponent implements OnInit {
+export class NavegationComponent implements OnInit {
 
   usuario: string;
   conversionDecryptOutput: string;
 
+
   constructor() { }
-
-
 
   ngOnInit() {
     this.logIn();
 
-    // Decrypt
+// Decrypt
 this.conversionDecryptOutput = localStorage.getItem('prf')
 
 if(this.conversionDecryptOutput){
@@ -35,8 +34,7 @@ var plaintext = bytes.toString(CryptoJS.enc.Utf8);
       this.usuario = 'Persona'
     }
   }
-
-  }
+}
 
   logout() {
     localStorage.removeItem('auth_token');
@@ -47,5 +45,7 @@ var plaintext = bytes.toString(CryptoJS.enc.Utf8);
   logIn(): boolean {
     return (localStorage.getItem('auth_token') !== null);
   }
+
+
 
 }

@@ -45,7 +45,7 @@
 
 @media screen and (max-width: 350px) {
     .card-body {
-        width: 150px;
+        width: 130px;
         padding: 0;
     }
     .col-md-3 {
