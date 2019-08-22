@@ -53,3 +53,8 @@
         padding: 0;
     }
 }
+
+input::-webkit-inner-spin-button{
+      opacity:1;
+    } 
+  

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
 import { Products } from '../../../models/products';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Selected } from 'src/app/models/selected';
 
 @Component({
   selector: 'app-fruit-derivates',
@@ -23,8 +25,17 @@ export class FruitDerivatesComponent implements OnInit {
 
   };
 
+  select: Selected = {
 
-  constructor(private productService: ProductsService, private router: Router) { }
+    descripcion: '',
+    cantidad:1,
+    precio: 0,
+    imagen: '',
+
+  };
+
+
+  constructor(private productService: ProductsService, private router: Router, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.getProducts();
@@ -41,6 +52,18 @@ export class FruitDerivatesComponent implements OnInit {
       err => console.log(err)
 
     )
+  }
+
+  showModal(producto: any, modal) {
+
+    this.select.descripcion = producto.descripcion;
+    this.select.precio = producto.precio;
+    this.select.imagen = producto.imagen;
+    this.modalService.open(modal);
+  }
+
+  closeModal(modal) {
+    this.modalService.dismissAll(modal);
   }
 
 }

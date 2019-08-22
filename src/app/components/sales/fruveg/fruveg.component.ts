@@ -30,11 +30,13 @@ export class FruvegComponent implements OnInit {
   select: Selected = {
 
     descripcion: '',
+    cantidad:1,
     precio: 0,
     imagen: '',
 
   };
 
+  closeResult: string;
 
   constructor(private productService: ProductsService, private router: Router, private modalService: NgbModal) { }
 
@@ -54,12 +56,16 @@ export class FruvegComponent implements OnInit {
     )
   }
 
-  show(product:any, modal) {
-   
-    this.select.descripcion = product;
-    this.modalService.open(modal);
+  showModal(producto: any, modal) {
 
+    this.select.descripcion = producto.descripcion;
+    this.select.precio = producto.precio;
+    this.select.imagen = producto.imagen;
+    this.modalService.open(modal);
   }
 
+  closeModal(modal) {
+    this.modalService.dismissAll(modal);
+  }
 
 }
