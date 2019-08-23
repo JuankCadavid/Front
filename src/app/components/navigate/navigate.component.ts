@@ -41,6 +41,8 @@ var plaintext = bytes.toString(CryptoJS.enc.Utf8);
   logout() {
     localStorage.removeItem('auth_token');
     localStorage.removeItem('prf');
+    localStorage.removeItem('entry');
+    localStorage.removeItem('allEntries');
   }
 
 
