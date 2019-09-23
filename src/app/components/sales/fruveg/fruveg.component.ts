@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../../services/products.service';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { Selected } from 'src/app/models/selected';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as CryptoJS from 'crypto-js';
@@ -23,7 +23,7 @@ export class FruvegComponent implements OnInit {
 
   //Car
   rec = [];
-  carList: any =[];
+  carList: any = [];
   closeResult: string;
   listshow: any = [];
 
@@ -35,6 +35,8 @@ export class FruvegComponent implements OnInit {
     imagen: '',
 
   };
+
+  Ptotal = 0;
 
 
 
@@ -74,7 +76,7 @@ export class FruvegComponent implements OnInit {
       res => {
 
         this.products = res;
-        
+
       },
       err => console.log(err)
 
@@ -85,7 +87,7 @@ export class FruvegComponent implements OnInit {
   showModal(producto: any, modal) {
 
     this.select.cantidad = 1,
-    this.select.descripcion = producto.descripcion;
+      this.select.descripcion = producto.descripcion;
     this.select.precio = producto.precio;
     this.select.imagen = producto.imagen;
     this.modalService.open(modal);
@@ -101,7 +103,7 @@ export class FruvegComponent implements OnInit {
     var entry = {
       "desc": select.descripcion,
       "price": select.precio,
-      "cant":select.cantidad
+      "cant": select.cantidad
     };
 
 
@@ -119,17 +121,47 @@ export class FruvegComponent implements OnInit {
 
   showList() {
 
+    let Ctotal = 0;
+    this.Ptotal = 0;
+
     this.carList = JSON.parse(localStorage.getItem('allEntries'));
 
-    this.listshow = this.carList.map(res => res)
+    if (this.carList) {
+      this.listshow = this.carList.map(res => res)
+    }
 
-   console.log(this.listshow);
-   
+    for (let index = 0; index < this.listshow.length; index++) {
+
+      const Cantidad = this.listshow[index].cant;
+      const Precio = this.listshow[index].price;
+
+      Ctotal += Cantidad;
+      this.Ptotal += Precio * Cantidad;
+    }
+
+    console.log(Ctotal);
+    console.log('$' + this.Ptotal);
+
+    console.log(this.listshow);
+
   }
 
   closeModal(modal) {
     this.modalService.dismissAll(modal);
   }
+
+  //Sidebar
+
+  open() {
+    this.showList();
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  };
+
+  close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  };
 
 
 }
